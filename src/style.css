@@ -1,16 +1,23 @@
+/*全局样式，清除p标签默认样式*/
 p {
     padding: 0;
     margin: 0;
 }
 
+.iconfont {
+    font-size: 20px;
+}
+
 html, body {
     margin: 0;
     padding: 0;
+    color: #36485C;
     background-color: #F3F3F3;
     font-size: 14px;
     font-family: "cruise", "Avenir", "Helvetica", Arial, sans-serif;
 }
 
+/*header样式*/
 header {
     position: fixed;
     width: 100%;
@@ -18,7 +25,7 @@ header {
     box-shadow: 2px 2px 2px 1px rgba(0, 0, 0, 0.2);
 }
 
-.header-container {
+header .container {
     max-width: 1200px;
     display: flex;
     margin: 0 auto;
@@ -28,7 +35,7 @@ header {
     padding-bottom: 10px;
 }
 
-.header-container > img {
+header .container .logo {
     position: absolute;
     top: 50%;
     left: 50%;
@@ -36,148 +43,169 @@ header {
     height: 40px;
 }
 
-.user-menu {
+header .container .avatar {
+    height: 40px;
+    border-radius: 50%;
     margin-right: 10px;
 }
 
-.user-menu img {
-    height: 40px;
-    border-radius: 50%;
-}
-
+/*主体样式*/
 .wrapper {
     display: flex;
     width: 100%;
-    height: calc(100vh - 64px - 28px);
+    height: calc(100vh - 60px - 30px);
     margin: 0 auto;
     max-width: 1200px;
-    padding-top: 64px;
+    padding-top: 60px;
 }
 
-.iconfont {
-    font-size: 20px;
-}
-
-.left-menu .iconfont {
-    margin-right: 15px;
-}
-
-.left {
+/*左侧样式*/
+.left-side {
     background-color: #2D4054;
-    flex: 1;
+    flex: 0 1 250px;
     padding-top: 5px;
     position: relative;
 }
 
-.left-menu ul {
+/*左侧menu样式*/
+.left-side .menu {
     list-style: none;
     padding-left: 0;
 }
 
-.left-menu a {
+.left-side .menu .iconfont {
+    margin-right: 15px;
+}
+
+.left-side .menu a {
     text-decoration: none;
     font-size: 14px;
     color: white;
-    padding: 12.5px 20px 12.5px;
+    padding: 12px 20px 12px;
     display: flex;
     align-items: center;
 }
 
-.left-menu li:hover a,
-.left-menu li .active {
+.left-side .menu li:hover a,
+.left-side .menu li .active
+ {
     color: #00B4CF;
     background-color: #435466;
 }
 
-.left-history {
+/*左侧history样式*/
+.left-side .history {
     padding: 10px;
-    max-width: 100%;
-    box-sizing: border-box;
     position: absolute;
-    bottom: 0px;
+    bottom: 0;
 }
 
-.left-history p {
+.left-side .history p {
     font-size: 24px;
     color: #ccc;
     margin: 0;
 }
 
-.history-list {
-    list-style: none;
-    padding-left: 0;
+.left-side .history .list {
     font-size: 12px;
     color: #999;
+    list-style: inside;
+    padding: 0;
     margin-top: 10px;
+    margin-bottom: 10px;
     overflow-y: auto;
     max-height: 200px;
 }
 
-.history-item {
-    display: flex;
-    align-items: center;
+/*::-webkit-scrollbar{*/
+/*    width: 10px !important;*/
+/*}*/
+
+/*::-webkit-scrollbar-thumb {*/
+/*    border-radius: 0;*/
+/*    border-style: dashed;*/
+/*    background-color: rgba(12, 80, 235, 0.4);*/
+/*    border-color: #e2242400;*/
+/*    border-width: 1.5px;*/
+/*    background-clip: padding-box;*/
+/*}*/
+
+/*::-webkit-scrollbar-track {!*滚动条里面轨道*!*/
+/*    -webkit-box-shadow: inset 0 0 5px rgba(0,0,0,0.2);*/
+/*    border-radius: 10px;*/
+/*    background: #EDEDED;*/
+/*}*/
+
+/*::-webkit-scrollbar-thumb:hover {*/
+/*    background: rgba(157, 165, 183, 0.7)*/
+/*}*/
+
+.left-side .history .list li {
     margin-bottom: 10px;
-}
-
-.history-item .dot {
-    width: 5px;
-    height: 5px;
-    border-radius: 50%;
-    background-color: #999;
-    margin-right: 15px;
-}
-
-.history-item:hover .dot {
-    background-color: #00B4CF;
-}
-
-.history-item:hover .history-item-content {
-    color: #00B4CF;
-}
-
-.history-item .history-item-content {
+    white-space: nowrap;
     max-width: 200px;
     overflow: hidden;
     text-overflow: ellipsis;
 }
 
-.right {
-    flex: 3.5;
+.left-side .history .list li:hover {
+    color: #00B4CF;
+}
+
+/*右侧样式*/
+.right-side {
+    flex: auto;
     padding: 15px 10px 10px 20px;
     overflow-y: auto;
 }
 
-.right-head {
+/*右侧head样式*/
+.right-side .head-container {
     display: flex;
     flex: 1;
     align-items: center;
     justify-content: space-between;
 }
 
-.right-head > div{
-    flex-basis: 280px;
+.right-side .head-container > div{
+    width: 280px;
     height: 120px;
     color: white;
     padding: 10px;
     box-sizing: border-box;
 }
 
-.building {
+.right-side .head-container .building {
     background-color: #FF9A2A;
     position: relative;
     font-size: 18px;
     font-weight: bold;
 }
 
-.idle {
+/*右侧head图案动画样式*/
+.right-side .head-container .building .icon-cog {
+    animation: spinning 2s infinite linear;
+}
+
+@keyframes spinning {
+    from {
+        transform: translate(-50%, -50%) rotate(0deg);
+    }
+
+    to {
+        transform: translate(-50%, -50%) rotate(360deg);
+    }
+}
+
+.right-side .head-container .idle {
     background-color: #7FBC39;
     position: relative;
     font-size: 18px;
     font-weight: bold;
 }
 
-.icon-cog,
-.icon-coffee {
+.right-side .head-container .building .icon-cog,
+.right-side .head-container .idle .icon-coffee {
     position: absolute;
     top: 50%;
     left: 50%;
@@ -186,14 +214,14 @@ header {
     color: rgba(255, 255, 255, 0.2);
 }
 
-.building .building-content,
-.idle .idle-contetn {
+.right-side .head-container .building .content,
+.right-side .head-container .idle .content {
     margin-left: 10px;
     margin-top: 10px;
 }
 
-.building p:last-child,
-.idle p:last-child {
+.right-side .head-container .building p:last-child,
+.right-side .head-container .idle p:last-child {
     font-size: 48px;
     line-height: 1;
     position: absolute;
@@ -203,25 +231,26 @@ header {
     right: 20px;
 }
 
-.right-head .overview {
+.right-side .head-container .overview {
     color: black;
     background-color: white;
     display: grid;
-    grid-template-columns: 1fr 1fr 1fr;
+    grid-template-columns: repeat(3, 1fr);
     grid-template-rows: 40px;
     text-align: center;
     align-items: center;
 }
 
-.right-head .overview .first-line {
+.right-side .head-container .overview .category {
     font-size: 12px;
 }
 
-.right-head .overview .second-line {
+.right-side .head-container .overview .number {
     font-size: 20px;
 }
 
-.right-nav {
+/*右侧nav样式*/
+.right-side .nav {
     display: flex;
     margin-top: 15px;
     background-color: white;
@@ -230,26 +259,24 @@ header {
     align-items: center;
 }
 
-.right-nav .right-nav-tab {
+.right-side .nav .tab {
     display: flex;
 }
 
-.right-nav-tab .right-nav-tab-item {
+.right-side .nav .tab .item {
     height: 50px;
     line-height: 50px;
-    min-width: 80px;
     padding: 0 30px;
-    text-align: center;
     border-right: 1px solid #F3F3F3;
     box-sizing: border-box;
 }
 
-.right-nav-tab-item.active {
+.right-side .nav .tab .item .active {
     color: #00B4CF;
     border-bottom: 3px solid #00B4CF;
 }
 
-.right-nav .right-nav-search {
+.right-side .nav .search {
     margin-left: 15px;
     position: relative;
     height: 100%;
@@ -258,14 +285,14 @@ header {
     box-sizing: border-box;
 }
 
-.right-nav-search .iconfont {
+.right-side .nav .search .iconfont {
     position: absolute;
     color: gray;
-    margin-left: 5px;
-    margin-top: 3px;
+    left: 15px;
+    top: 13px;
 }
 
-.right-nav-search input {
+.right-side .nav .search input {
     min-width: 200px;
     height: 28px;
     border: none;
@@ -273,60 +300,62 @@ header {
     box-shadow: 1px 1px 1px 1px rgba(0, 0, 0, 0.2) inset;
     padding-left: 35px;
 }
-.right-nav > .icon-th-card {
+.right-side .nav .icon-th-card {
     margin-right: 20px;
 }
 
-.right-nav > .icon-th-list {
-    margin-right: 30px;
+.right-side .nav .icon-th-list {
+    margin-right: 20px;
 }
 
-.right-nav > .iconfont.active {
+.right-side .nav .iconfont.active {
     color: #00B4CF;
 }
 
+/*右侧主体item样式*/
 .right-content {
     margin-top: 15px;
 }
 
-.right-content .right-content-item {
+.right-content .item {
     display: flex;
     padding: 15px;
     margin-bottom: 15px;
     background-color: white;
-    box-sizing: border-box;
     align-items: center;
 }
 
-.right-content-item .content-item-detail {
+.right-content .item .detail {
     margin-left: 25px;
-    flex-basis: 100%;
+    flex: auto;
 }
 
-.content-item-detail .item-detail-firstline {
+.right-content .item .detail .info {
     display: flex;
     align-items: center;
     margin-bottom: 20px;
 }
 
-.item-detail-firstline .detail-firstline-icon {
+.right-content .item .detail .info .info-icon {
+    flex: 1;
+    justify-content: flex-end;
     margin-right: 30px;
     display: flex;
     align-items: center;
 }
 
-.detail-firstline-icon .iconfont {
+.right-content .item .detail .info .info-icon .iconfont {
     font-size: 16px;
     color: gray;
     margin-right: 10px;
 }
 
-.detail-firstline-icon .blue-content {
+.right-content .item .detail .info .info-icon .blue-content {
     color: #00B4CF;
     font-weight: bold;
 }
 
-.detail-firstline-icon .icon-content {
+.right-content .item .detail .info .info-icon .icon-content {
     line-height: normal;
     max-width: 230px;
     overflow: hidden;
@@ -334,40 +363,40 @@ header {
     white-space: nowrap;
 }
 
-.detail-firsetline-label {
+.right-content .item .detail .info .info-label {
     font-size: 14px;
     color: white;
     padding: 2px 10px;
-    margin-right: 25px;
 }
 
-.detail-firsetline-label.green {
+.right-content .item .detail .info .info-label.green {
     background-color: #7FBC39;
 }
 
-.detail-firsetline-label.orange {
+.right-content .item .detail .info .info-label.orange {
     background-color: #FF9A2A;
 }
 
-.content-item-detail .item-detail-secondline {
+.right-content .item .detail .operations {
     display: flex;
     align-items: center;
-    flex-wrap: wrap;
     justify-content: space-between;
+    margin-bottom: -10px;
 }
 
-.item-detail-secondline .button-plus {
+.right-content .item .detail .operations .button-plus {
     background-color: #00B4CF;
     color: white;
     font-size: 18px;
     padding: 3px 4px;
 }
 
-.item-detail-secondline .buttons {
+.right-content .item .detail .operations .buttons {
     display: flex;
+    flex-wrap: wrap;
 }
 
-.item-detail-secondline button {
+.right-content .item .detail .operations button {
     padding: 5px 10px;
     font-size: 14px;
     margin-right: 10px;
@@ -377,20 +406,22 @@ header {
     display: flex;
     align-items: center;
     box-sizing: border-box;
+    margin-bottom: 10px;
+    color: #36485C;
 }
 
-.item-detail-secondline button .iconfont {
+.right-content .item .detail .operations button .iconfont {
     font-size: 18px;
     margin-left: 5px;
 }
 
-.item-detail-secondline .button-deny {
+.right-content .item .detail .operations .button-deny {
     background-color: #00B4CF;
     color: white;
     height: 30px;
 }
 
-.item-detail-secondline .button-deny .iconfont {
+.right-content .item .detail .operations .button-deny .iconfont {
     font-size: 14px;
     margin-right: 5px;
     margin-left: 0;
